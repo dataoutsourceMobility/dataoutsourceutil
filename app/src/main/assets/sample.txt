@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<head>
+	<style type="text/css">
+#invoiceform{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-dialog{
+  /*max-width: 1400px !important;*/
+}
+
+#invoiceHeader{
+  border-color: #000;
+  background-color: #444446;
+  color: #fff;
+}
+
+.signatureStamp{
+  border-style: dashed;
+  padding: 100px;
+  text-align: center;
+}
+
+#summOfchargesDiv{
+  padding-top: 10px;
+}
+
+#summOfcharges {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#summOfcharges td, #summOfcharges th {
+  padding: 8px;
+}
+
+#summOfcharges tr:nth-child(even){background-color: #f2f2f2;}
+
+#summOfcharges tr:hover {background-color: #ddd;}
+
+#summOfcharges th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#totalCharges{
+  border-top: 2px solid #ddd;
+  font-size: 20px;
+}
+
+.tdBorderBottom{
+  border-bottom: 1px solid black;
+}
+#invoiceHeader{
+  border-color: #000;
+  background-color: #444446;
+  color: #fff;
+}
+#invoiceDetails{
+  text-align: right;
+}
+.panel-heading-style{
+  background-color: #444446 !important;
+  color: #fff !important;
+}
+#usedSummary{
+  padding-top: 10px;
+}
+
+table{
+  border-spacing: 0;
+  display: table;
+}
+
+.tableRow{
+  padding-bottom: 50px;
+}
+
+#rightTable{
+  margin-top: -69px;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.dataTables_wrapper {
+  position: relative;
+  clear: both;
+  zoom: 1;
+}
+
+html,body{
+  font-family: "Helvetica Neue",Helvetica,Arial,Lato,"Roboto",sans-serif;
+}
+
+body{
+  line-height: 1.2;
+  font-size: 14px;
+}
+table.dataTable.no-footer {
+  border-bottom: 2px solid #cecece;
+}
+table.dataTable, table.dataTable th, table.dataTable td {
+  box-sizing: content-box;
+}
+table.dataTable {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table-bordered {
+  border: 1px solid #ddd;
+}
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+
+/*copy all bootstrap css*/
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h1 small,
+.h1 small,
+h2 small,
+.h2 small,
+h3 small,
+.h3 small,
+h1 .small,
+.h1 .small,
+h2 .small,
+.h2 .small,
+h3 .small,
+.h3 .small {
+  font-size: 65%;
+}
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h4 small,
+.h4 small,
+h5 small,
+.h5 small,
+h6 small,
+.h6 small,
+h4 .small,
+.h4 .small,
+h5 .small,
+.h5 .small,
+h6 .small,
+.h6 .small {
+  font-size: 75%;
+}
+h1,
+.h1 {
+  font-size: 36px;
+}
+h2,
+.h2 {
+  font-size: 30px;
+}
+h3,
+.h3 {
+  font-size: 24px;
+}
+h4,
+.h4 {
+  font-size: 18px;
+}
+h5,
+.h5 {
+  font-size: 14px;
+}
+h6,
+.h6 {
+  font-size: 12px;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 992px) {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+  }
+  .col-md-12 {
+    width: 100%;
+  }
+  .col-md-11 {
+    width: 91.66666667%;
+  }
+  .col-md-10 {
+    width: 83.33333333%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+  .col-md-7 {
+    width: 58.33333333%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-5 {
+    width: 41.66666667%;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-2 {
+    width: 16.66666667%;
+  }
+  .col-md-1 {
+    width: 8.33333333%;
+  }
+  .col-md-pull-12 {
+    right: 100%;
+  }
+  .col-md-pull-11 {
+    right: 91.66666667%;
+  }
+  .col-md-pull-10 {
+    right: 83.33333333%;
+  }
+  .col-md-pull-9 {
+    right: 75%;
+  }
+  .col-md-pull-8 {
+    right: 66.66666667%;
+  }
+  .col-md-pull-7 {
+    right: 58.33333333%;
+  }
+  .col-md-pull-6 {
+    right: 50%;
+  }
+  .col-md-pull-5 {
+    right: 41.66666667%;
+  }
+  .col-md-pull-4 {
+    right: 33.33333333%;
+  }
+  .col-md-pull-3 {
+    right: 25%;
+  }
+  .col-md-pull-2 {
+    right: 16.66666667%;
+  }
+  .col-md-pull-1 {
+    right: 8.33333333%;
+  }
+  .col-md-pull-0 {
+    right: auto;
+  }
+  .col-md-push-12 {
+    left: 100%;
+  }
+  .col-md-push-11 {
+    left: 91.66666667%;
+  }
+  .col-md-push-10 {
+    left: 83.33333333%;
+  }
+  .col-md-push-9 {
+    left: 75%;
+  }
+  .col-md-push-8 {
+    left: 66.66666667%;
+  }
+  .col-md-push-7 {
+    left: 58.33333333%;
+  }
+  .col-md-push-6 {
+    left: 50%;
+  }
+  .col-md-push-5 {
+    left: 41.66666667%;
+  }
+  .col-md-push-4 {
+    left: 33.33333333%;
+  }
+  .col-md-push-3 {
+    left: 25%;
+  }
+  .col-md-push-2 {
+    left: 16.66666667%;
+  }
+  .col-md-push-1 {
+    left: 8.33333333%;
+  }
+  .col-md-push-0 {
+    left: auto;
+  }
+  .col-md-offset-12 {
+    margin-left: 100%;
+  }
+  .col-md-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  .col-md-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  .col-md-offset-9 {
+    margin-left: 75%;
+  }
+  .col-md-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  .col-md-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  .col-md-offset-6 {
+    margin-left: 50%;
+  }
+  .col-md-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  .col-md-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  .col-md-offset-3 {
+    margin-left: 25%;
+  }
+  .col-md-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  .col-md-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  .col-md-offset-0 {
+    margin-left: 0;
+  }
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+th {
+  text-align: left;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+.panel-body {
+  padding: 15px;
+}
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel-heading > .dropdown .dropdown-toggle {
+  color: inherit;
+}
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: inherit;
+}
+
+.panel-default {
+  border-color: #ddd;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  /*margin: 10px;*/
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+ /* border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);*/
+  /*border-radius: 6px;*/
+  outline: 0;
+  /*-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);*/
+}
+
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    /*-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);*/
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+
+.clearfix:before,
+.clearfix:after,
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-header:before,
+.modal-header:after,
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after,
+.dl-horizontal dd:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-header:after,
+.modal-footer:after {
+  clear: both;
+}
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+.hidden {
+  display: none !important;
+}
+</style>
+</head>
+	<body>
+
+        <div class="modal-header" id="invoiceHeader">
+          <div class="row">       
+            <div class="col-md-8">
+              <h3 id="companyName">ACA</h3>
+            </div>
+            <div class="col-md-4 pull-right" id="invoiceDetails">
+              <p id="invoiceNumber">IN0000431</p>
+              <p id="invoiceDate">August 31, 2018</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="container-fluid">
+
+            <table class="col-md-6">
+              <tbody><tr>
+                <td>Bill To : </td>
+                <td class="tdBorderBottom" id="billTo">ACA</td>
+              </tr>
+              <tr>
+                <td>Location : </td>
+                <td class="tdBorderBottom" id="location"></td>
+              </tr>
+              <tr>
+                <td>Contact : </td>
+                <td class="tdBorderBottom" id="contact">Edwin Dejados II</td>
+              </tr>
+            </tbody></table>
+
+
+            <table class="col-md-6">
+              <tbody><tr>
+                <td>AFE : </td>
+                <td class="tdBorderBottom" id="AFE"></td>
+              </tr>
+              <tr>
+                <td>Code : </td>
+                <td class="tdBorderBottom" id="code"></td>
+              </tr>
+              <tr>
+                <td>Contact Email : </td>
+                <td class="tdBorderBottom" id="contactEmail">claire.alegado@dataoutsource.com</td>
+              </tr>
+            </tbody></table>
+
+            <div class="panel-group summaryclass">
+              <div class="col-md-12" id="usedSummary">
+                <div class="panel panel-default" id="labourUsed">
+                  <div class="panel-heading panel-heading-style">Labour Used</div>
+                  <div class="panel-body" id="invoicelabourDTB"><div id="laborsUsedTable_wrapper" class="dataTables_wrapper no-footer"><table id="laborsUsedTable" class="table table-striped table-bordered dataTable no-footer" role="grid">
+    <thead>
+    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 103px;">Full Name</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">Worker Type</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 138px;">Standard Hours</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 73px;">ST Rate</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 143px;">Over-time Hours</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 75px;">OT Rate</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;">Total</th></tr>
+    </thead>
+    <tbody><tr role="row" class="odd"><td>Edwin Dejados</td><td>Laborer</td><td>100</td><td>$100</td><td>20</td><td>$150</td><td>$13000</td></tr></tbody></table></div></div>
+                </div>
+                <div class="panel panel-default" id="equipmentUsed">
+                  <div class="panel-heading panel-heading-style">Equipment Used</div>
+                  <div class="panel-body" id="invoiceequipmentDTB"><div id="equipmentUsedTable_wrapper" class="dataTables_wrapper no-footer"><table id="equipmentUsedTable" class="table table-striped table-bordered dataTable no-footer" role="grid">
+    <thead>
+    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 197px;">Equipment Name</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 103px;">Unit No.</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 183px;">Unit of Measure</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 108px;">Quantity</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 68px;">Rate</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 72px;">Total</th></tr>
+    </thead>
+    <tbody><tr role="row" class="odd"><td>Acer Laptop</td><td>mm33</td><td>Daily Standby</td><td>1</td><td>$9</td><td>$9</td></tr></tbody></table></div></div>
+                </div>
+                <div class="panel panel-default" id="materialUsed">
+                  <div class="panel-heading panel-heading-style">Material Used</div>
+                  <div class="panel-body" id="invoicematerialDTB"><div id="materialUsedTable_wrapper" class="dataTables_wrapper no-footer"><table id="materialUsedTable" class="table table-striped table-bordered dataTable no-footer" role="grid">
+    <thead>
+    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 153px;">Item Name</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 128px;">Quantity</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 215px;">Unit of Measure</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 185px;">Cost Per Unit</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;">Total</th></tr>
+    </thead>
+    <tbody><tr class="odd"><td valign="top" colspan="5" class="dataTables_empty">No data available in table</td></tr></tbody></table></div></div>
+                </div>
+                <div class="panel panel-default" id="thirdParty">
+                  <div class="panel-heading panel-heading-style">3<sup>rd</sup> Party</div>
+                  <div class="panel-body" id="invoiceotherPartyDTB"><div id="opUsedTable_wrapper" class="dataTables_wrapper no-footer"><table id="opUsedTable" class="table table-striped table-bordered dataTable no-footer" role="grid">
+    <thead>
+    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 234px;">Vendor Name</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 229px;">Original Cost</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 149px;">Markup</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 195px;">Final Price</th></tr>
+    </thead>
+    <tbody><tr class="odd"><td valign="top" colspan="4" class="dataTables_empty">No data available in table</td></tr></tbody></table></div></div>
+                </div>
+              </div>
+              <div class="col-md-6" id="summOfchargesDiv">
+                <div class="panel panel-default">
+                  <div class="panel-heading panel-heading-style">Summary of Charges</div>
+                  <table id="summOfcharges" class="table table-striped table-bordered dataTable no-footer">
+                    <tbody><tr>
+                    </tr>
+                    <tr id="labourUsed">
+                      <td class="tdLabels">Labour Charges</td>
+                      <td id="invoicelabourTotal">$13000</td>
+                    </tr>
+                    <tr id="equipmentUsed">
+                      <td class="tdLabels">Equipment Charges</td>
+                      <td id="invoiceequipmentTotal">$0</td>
+                    </tr>
+                    <tr id="materialUsed">
+                      <td class="tdLabels">Material Charges</td>
+                      <td id="invoicematerialTotal">$0</td>
+                    </tr>
+                    <tr id="thirdParty">
+                      <td class="tdLabels">3<sup>rd</sup> Party Charges</td>
+                      <td id="invoicethirdPartyTotal">$0</td>
+                    </tr>
+                    <tr id="totalCharges">
+                      <td>Total</td>
+                      <td id="invoicesummaryChargesTotal">$13000</td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              </div>
+              <div class="col-md-6">
+                Customer Signature Stamp <span id="requireSign" class="hidden">*</span>
+                <img src="data:image/png;base64,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" id="sign_prev" style="" width="450px" height="200px">
+                <button id="btnAddSign" type="button" class="signatureStamp hidden" onclick="loadSignatureForm()">
+                  <h4>Add Signature / Stamp</h4>
+                </button>
+                <!-- <br/> -->
+                
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+      
+	</body>
+</html>

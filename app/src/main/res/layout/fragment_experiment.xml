@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".ExperimentFragment"
+              android:padding="16dp"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get User"
+            android:id="@+id/btnGetUser"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get FormDigest"
+            android:id="@+id/btnGetFormDigest"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get List Items By Title"
+            android:id="@+id/btnGetListItemsTitle"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add list item"
+            android:id="@+id/btnAddListItem"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create PDF"
+            android:id="@+id/btnCreatePDF"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read assets file"
+            android:id="@+id/btnReadAssetsFile"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add File"
+            android:id="@+id/btnAddFile"/>
+
+</LinearLayout>
