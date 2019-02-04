@@ -1,7 +1,7 @@
 package com.dataoutsource.dataoutsourceutil.data.ui
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONObject
 
 open class Dataoutsource : AppCompatActivity(){
